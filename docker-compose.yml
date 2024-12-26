@@ -1,0 +1,32 @@
+version: '2'
+
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "100k"
+    max-file: "1"
+
+networks:
+  shared-services:
+    external: true
+
+services:
+  proxy:
+    restart: always
+    image: nginx:1.19.6-alpine
+    container_name: mtls_nginx_server
+    ports:
+      - "${HOST_PORT}:${PORT}"
+    environment:
+      - DOLAR=$$
+      - PORT=${PORT}
+      - DOMAIN=${DOMAIN}
+      - SSL_CLIENT_CERTIFICATE_PATH=${SSL_CLIENT_CERTIFICATE_PATH}
+      - REDIRECT_URL=${REDIRECT_URL}
+    volumes:
+      - ./certs:/etc/pki/tls/certs/:ro                
+      - ./config/nginx.conf:/etc/nginx/nginx.conf:ro 
+      - ./templates:/etc/nginx/templates            
+    logging: *default-logging
+    networks:
+      - shared-services
