@@ -11,4 +11,4 @@ Lembrando que o "/pix" é adicionado automaticamente quando o webhook for de fat
 
 Por se tratar de um servidor nginx, é possível adicionar novas configurações de acordo com a necessidade do usuário, para isso basta adicionar as configurações no arquivo config/nginx.conf.
 
-Se tiverem alguma dúvida, entre em contato conosco. Estamos à disposição para ajudá-los da forma mais assertiva possível.
+Se tiverem alguma dúvida, entrem em contato conosco através da [nossa comunidade no Discord](https://comunidade.sejaefi.com.br/). Estamos à disposição para ajudá-los da forma mais assertiva possível.
